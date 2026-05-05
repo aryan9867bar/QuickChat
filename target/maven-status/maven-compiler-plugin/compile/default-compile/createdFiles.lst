@@ -1,0 +1,4 @@
+com/sts/config/WebSocketConfig.class
+com/sts/ChatApplication.class
+com/sts/model/ChatMessage.class
+com/sts/controller/ChatController.class
