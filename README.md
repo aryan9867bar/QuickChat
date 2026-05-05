@@ -1,11 +1,10 @@
-# 💬 Quick Chat
+# 💬 Quick Chat - Chatting Application
 
-A real-time multi-room chat application built with **Spring Boot**, **WebSockets**, **SockJS**, and **STOMP**.  
-Multiple users can join named rooms and exchange messages instantly — no page refresh needed.
+A real-time multi-room chat application built with **Spring Boot**, **WebSockets**, **SockJS**, and **STOMP**. Multiple users can join named rooms and exchange messages instantly — no page refresh needed.
 
 ---
 
-## ✨ Features
+## Features
 
 - Real-time messaging via WebSockets (STOMP protocol)
 - **Multi-room support** — join any room by entering a Room ID
@@ -16,7 +15,7 @@ Multiple users can join named rooms and exchange messages instantly — no page 
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer     | Technology                          |
 |-----------|-------------------------------------|
@@ -27,7 +26,37 @@ Multiple users can join named rooms and exchange messages instantly — no page 
 
 ---
 
-## 🚀 How to Run
+## Technologies Used
+
+### Backend
+
+- **Spring Boot** : Framework for creating the REST API and WebSocket server.
+
+- **WebSockets** : Enables real-time, full-duplex communication between client and server.
+
+- **SockJS** : Provides fallback support for browsers that do not support native WebSockets.
+
+- **STOMP (Simple Text-Oriented Messaging Protocol)** : Used over WebSockets for structured message communication.
+
+---
+
+## System Design
+
+The application follows a real-time communication model where:
+
+- A **Spring Boot server** manages WebSocket connections
+- Clients communicate using the **STOMP protocol**
+- **SockJS** provides fallback support for browsers without native WebSocket support
+
+### Architecture Flow
+
+Below is the system design diagram illustrating the communication flow:
+
+![System Design Diagram](img.png)
+
+---
+
+## How to Run
 
 ### Option 1 — Run the pre-built JAR (fastest)
 
@@ -86,7 +115,7 @@ java -jar target/chat-0.0.1-SNAPSHOT.jar --server.port=8080
 
 ---
 
-## 📖 How to Use
+## How to Use
 
 1. Open **http://localhost:3000** in two or more browser tabs/windows.
 2. Type a **Room ID** (e.g. `general`, `team-a`) and click **Join Room**.
@@ -96,7 +125,22 @@ java -jar target/chat-0.0.1-SNAPSHOT.jar --server.port=8080
 
 ---
 
-## 🏗️ Project Structure
+## How It Works
+
+1. **Connection Establishment**  
+   Clients connect to the Spring Boot server using **WebSockets** or **SockJS** as a fallback.  
+   The **STOMP protocol** is used for sending and receiving messages.
+
+2. **Messaging**  
+   Users send messages through the WebSocket connection.  
+   The backend processes and broadcasts messages to the appropriate room subscribers.
+
+3. **Fallback Support**  
+   If WebSocket support is unavailable, **SockJS** enables communication using HTTP-based alternatives.
+
+---
+
+## Project Structure
 
 ```
 src/
@@ -117,7 +161,7 @@ src/
 
 ---
 
-## 🔌 WebSocket API
+## WebSocket API
 
 | Direction        | Destination                       | Description                          |
 |------------------|-----------------------------------|--------------------------------------|
@@ -135,7 +179,7 @@ src/
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 Edit `src/main/resources/application.properties`:
 
@@ -146,20 +190,12 @@ logging.level.com.sts=DEBUG              # Enable debug logs
 
 ---
 
-## 🐛 Bugs Fixed (from original)
+## Contributing
 
-| Bug | Fix |
-|-----|-----|
-| Hardcoded IP `192.168.1.35:3000` in frontend | Replaced with `window.location.origin` — works on any machine |
-| Frontend subscribed to `/topic/messages` but server broadcast to `/topic/{roomID}/messages` | Aligned paths to use room-scoped topics |
-| Frontend sent to `/app/sendMessage` but controller mapped `/{roomID}/sendMessage` | Fixed frontend to send to `/app/{roomID}/sendMessage` |
-| Missing `.withSockJS()` on WebSocket endpoint | Added SockJS fallback to `WebSocketConfig` |
-| Debug logging level left on for all WebSocket layers | Set to `INFO` in `application.properties` |
-| Thymeleaf template warning on every startup | Added `spring.thymeleaf.check-template-location=false` |
-| Single-stage Dockerfile (no build caching) | Replaced with optimized multi-stage Docker build |
+Contributions are welcome!
 
----
-
-## 📄 License
-
-MIT — free to use and modify.
+1. Fork the repository
+2. Create a new branch (`feature/your-feature`)
+3. Commit your changes
+4. Push to your branch
+5. Open a Pull Request 
