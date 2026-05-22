@@ -126,7 +126,7 @@ java -jar target/chat-0.0.1-SNAPSHOT.jar --server.port=8080
 3. Connect your repo — Render auto-detects the Dockerfile
 4. Click **Deploy** ✅
 
-Your app will be live at `https://your-app-name.onrender.com`
+Your app will be live at `https://quickchat-f1tn.onrender.com`
 
 ---
 
