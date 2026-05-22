@@ -78,7 +78,7 @@ Open your browser at: **http://localhost:3000**
 
 ```bash
 # Clone / unzip the project, then:
-cd Quick-Chat-fixed
+cd Quick-Chat
 
 # Build
 ./mvnw package -DskipTests
