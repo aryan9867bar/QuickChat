@@ -23,6 +23,8 @@ A real-time multi-room chat application built with **Spring Boot**, **WebSockets
 | Protocol  | STOMP over SockJS                   |
 | Frontend  | Vanilla JS, SockJS client, STOMP.js |
 | Build     | Maven (Java 21)                     |
+| Container | Docker (Eclipse Temurin 21 Alpine)  |
+
 
 ---
 
@@ -115,6 +117,19 @@ java -jar target/chat-0.0.1-SNAPSHOT.jar --server.port=8080
 
 ---
 
+## Deploying to Render
+
+**Quick summary:**
+
+1. Push your code to GitHub
+2. Create a new **Web Service** on [render.com](https://render.com)
+3. Connect your repo — Render auto-detects the Dockerfile
+4. Click **Deploy** ✅
+
+Your app will be live at `https://your-app-name.onrender.com`
+
+---
+
 ## How to Use
 
 1. Open **http://localhost:3000** in two or more browser tabs/windows.
@@ -190,6 +205,13 @@ logging.level.com.sts=DEBUG              # Enable debug logs
 
 ---
 
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
 ## Contributing
 
 Contributions are welcome!
@@ -199,3 +221,5 @@ Contributions are welcome!
 3. Commit your changes
 4. Push to your branch
 5. Open a Pull Request 
+
+---
